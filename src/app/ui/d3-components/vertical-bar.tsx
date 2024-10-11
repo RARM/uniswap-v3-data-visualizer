@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-const HorizontalBar: React.FC = () => {
+const VerticalBar: React.FC = () => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
@@ -45,4 +45,4 @@ const HorizontalBar: React.FC = () => {
   return <svg ref={svgRef}></svg>;
 };
 
-export default HorizontalBar;
+export default VerticalBar;
