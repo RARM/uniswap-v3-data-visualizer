@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
+// Example D3 component.
 const VerticalBar: React.FC = () => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
