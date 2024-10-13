@@ -6,9 +6,10 @@ interface HorizontalBarProps {
     label: string;
     value: number;
   }>;
+  values_symbol: string;
 }
 
-const HorizontalBar: React.FC<HorizontalBarProps> = ({ values }) => {
+const HorizontalBar: React.FC<HorizontalBarProps> = ({ values, values_symbol }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
@@ -29,6 +30,15 @@ const HorizontalBar: React.FC<HorizontalBarProps> = ({ values }) => {
       .range([margin.top, height - margin.bottom])
       .padding(0.25);
 
+    // Tooltip
+    const tooltip = d3.select('body').append('div')
+      .attr('class', 'tooltip')
+      .style('position', 'absolute')
+      .style('background', '#f9f9f9')
+      .style('border', '1px solid #d3d3d3')
+      .style('padding', '5px')
+      .style('display', 'none');
+
     // Boxes.
     svg.append('g')
       .selectAll('rect')
@@ -39,7 +49,18 @@ const HorizontalBar: React.FC<HorizontalBarProps> = ({ values }) => {
       .attr('y', (d, i) => y(i.toString()) as number)
       .attr('width', d => x(d) - x(0))
       .attr('height', y.bandwidth())
-      .attr('fill', 'steelblue');
+      .attr('fill', 'steelblue')
+      .on('mouseover', function (event, d) {
+        tooltip.style('display', 'block')
+          .html(`Value: ${d} (${ values_symbol })`)
+          .style('left', `${event.pageX}px`)
+          .style('top', `${event.pageY - 45}px`)
+          .style('font-size', '0.9em')
+          .style('padding', '2px 12px');
+      })
+      .on('mouseout', function () {
+        tooltip.style('display', 'none');
+      });
 
     // X labels.
     svg.append('g')

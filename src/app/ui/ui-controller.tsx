@@ -16,6 +16,7 @@ const UIController: React.FC = () => {
       <h1>Data Visualizer</h1>
       <HorizontalBar
         values={sample_values}
+        values_symbol="$"
       />
     </div>
   );
