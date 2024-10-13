@@ -7,9 +7,11 @@ interface HorizontalBarProps {
     value: number;
   }>;
   values_symbol: string;
+  x_label: string;
+  y_label: string;
 }
 
-const HorizontalBar: React.FC<HorizontalBarProps> = ({ values, values_symbol }) => {
+const HorizontalBar: React.FC<HorizontalBarProps> = ({ values, values_symbol, x_label, y_label }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
@@ -71,7 +73,22 @@ const HorizontalBar: React.FC<HorizontalBarProps> = ({ values, values_symbol }) 
     svg.append('g')
       .attr('transform', `translate(${margin.left},0)`)
       .call(d3.axisLeft(y).tickFormat((d, i) => values[i].label));
-  }, []);
+
+    // X axis label
+    svg.append('text')
+      .attr('text-anchor', 'end')
+      .attr('x', width / 2)
+      .attr('y', height - 6)
+      .text(x_label);
+
+    // Y axis label
+    svg.append('text')
+      .attr('text-anchor', 'middle')
+      .attr('x', -height / 2)
+      .attr('y', margin.left - 50)
+      .attr('transform', 'rotate(-90)')
+      .text(y_label);
+  }, [values, values_symbol, x_label, y_label]);
 
   return (
     <>
