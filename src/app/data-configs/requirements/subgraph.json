@@ -1,0 +1,11 @@
+{
+  "name": "subgraph_api",
+  "description": "The subgraph API key.",
+  "values": [
+    {
+      "name": "SUBGRAPH_KEY",
+      "env": "SUBGRAPH_KEY",
+      "description": "The subgraph API key."
+    }
+  ]
+}

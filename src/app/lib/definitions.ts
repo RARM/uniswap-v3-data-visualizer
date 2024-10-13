@@ -1,4 +1,55 @@
 /**
+ * Type representing a requirement check.
+**/
+export type RequirementCheck = {
+  /**
+   * The name of the requirement. It is the key to access the requirement values.
+  **/
+  name: string;
+
+  /**
+   * The description of the requirement (optional).
+  **/
+  description?: string;
+
+  /**
+   * An array of values associated with the requirement (optional).
+  **/
+  values: Array<RequirementValue>;
+}
+
+/**
+ * Type representing a value associated with a requirement.
+**/
+export type RequirementValue = {
+  /**
+   * The name of the value. It is also the key to access the value.
+  **/
+  name: string;
+
+  /**
+   * Indicates whether the requirement exists. In other words, if it is
+   * saved in the value attribute.
+  **/
+  exists: boolean;
+
+  /**
+   * The expected environment value.
+  **/
+  env: string;
+
+  /**
+   * The description of the value (optional).
+  **/
+  description?: string;
+
+  /**
+   * The actual value.
+  **/
+  value?: any;
+}
+
+/**
  * Interface for the config retrieval object.
 **/
 export interface ConfigRetrievalInterface {
