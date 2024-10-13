@@ -1,15 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+import { HorizontalBarProps } from '@/app/ui/d3-components/definitions';
 import * as d3 from 'd3';
-
-interface HorizontalBarProps {
-  values: Array<{
-    label: string;
-    value: number;
-  }>;
-  values_symbol: string;
-  x_label: string;
-  y_label: string;
-}
 
 const HorizontalBar: React.FC<HorizontalBarProps> = ({ values, values_symbol, x_label, y_label }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
