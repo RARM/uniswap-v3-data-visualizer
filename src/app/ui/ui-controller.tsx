@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
-import VerticalBar from '@/app/ui/d3-components/vertical-bar';
+import HorizontalBar from '@/app/ui/d3-components/horizontal-bar';
 
 const UIController: React.FC = () => {
   return (
     <div>
       <h1>Data Visualizer</h1>
-      <VerticalBar />
+      <HorizontalBar />
     </div>
   );
 };
