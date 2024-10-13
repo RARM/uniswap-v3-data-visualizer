@@ -1,12 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-// Example D3 component.
-const HorizontalBar: React.FC = () => {
+interface HorizontalBarProps {
+  values: Array<{
+    label: string;
+    value: number;
+  }>;
+}
+
+const HorizontalBar: React.FC<HorizontalBarProps> = ({ values }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
-    const data = [10, 20, 30, 40, 50];
+    const data = d3.map(values, d => d.value);
     const svg = d3.select(svgRef.current);
     const width = 500;
     const height = 200;
@@ -21,8 +27,9 @@ const HorizontalBar: React.FC = () => {
     const y = d3.scaleBand()
       .domain(data.map((d, i) => i.toString()))
       .range([margin.top, height - margin.bottom])
-      .padding(0.1);
+      .padding(0.25);
 
+    // Boxes.
     svg.append('g')
       .selectAll('rect')
       .data(data)
@@ -34,16 +41,22 @@ const HorizontalBar: React.FC = () => {
       .attr('height', y.bandwidth())
       .attr('fill', 'steelblue');
 
+    // X labels.
     svg.append('g')
       .attr('transform', `translate(0,${height - margin.bottom})`)
       .call(d3.axisBottom(x));
 
+    // Y labels.
     svg.append('g')
       .attr('transform', `translate(${margin.left},0)`)
-      .call(d3.axisLeft(y).tickFormat((d, i) => `Item ${i + 1}`));
+      .call(d3.axisLeft(y).tickFormat((d, i) => values[i].label));
   }, []);
 
-  return <svg ref={svgRef}></svg>;
+  return (
+    <>
+      <svg ref={svgRef}></svg>
+    </>
+  );
 };
 
 export default HorizontalBar;
