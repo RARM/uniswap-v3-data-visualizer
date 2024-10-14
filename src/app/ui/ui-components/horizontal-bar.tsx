@@ -99,3 +99,11 @@ const HorizontalBar: React.FC<HorizontalBarProps> = ({ values, values_symbol, x_
 };
 
 export default HorizontalBar;
+
+// const HorizontalBarConfig = {
+//   title: 'HorizontalBar',
+//   component: HorizontalBar,
+//   typeDefinition: 'HorizontalBarProps'
+// };
+
+// export default HorizontalBarConfig;

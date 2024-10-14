@@ -124,3 +124,24 @@ export enum QueryType {
 export interface ExpectedValues { // FIXME: Define how the expected values should be structured.
   [key: string]: any;
 }
+
+// FIXME: Work for future refactoring. Implement dynamic importing of UI components.
+// /**
+//  * Interface for UI component definition.
+// **/
+// export interface UIComponentInterface {
+//   /**
+//    * The title of the UI component serving as a key to access it.
+//   **/
+//   title: string;
+
+//   /**
+//    * React funtional component.
+//   **/
+//   component: React.FC<any>;
+
+//   /**
+//    * Type definition of expected parameter of component.
+//   **/
+//   typeDefinition: string;
+// }

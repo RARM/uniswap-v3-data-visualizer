@@ -1,7 +1,28 @@
 'use client';
 import React from 'react';
-import HorizontalBar from '@/app/ui/d3-components/horizontal-bar';
-import Table from '@/app/ui/table';
+
+// FIXME: This manual import and mapping could be improved in the future with
+// dyanmic importing of UI components.
+import HorizontalBar from '@/app/ui/ui-components/horizontal-bar';
+import Table from '@/app/ui/ui-components/table';
+
+const UIComponentsMap = {
+  'HorizontalBar': HorizontalBar,
+  'Table': Table
+};
+// End of FIXME.
+
+type UIControllerProps = {
+  sections: Array<{
+    heading: string;
+    description?: string;
+    components: Array<{
+      subheading?: string;
+      component: string;
+      props: any;
+    }>;
+  }>;
+}
 
 const UIController: React.FC = () => {
   let sample_values = [
