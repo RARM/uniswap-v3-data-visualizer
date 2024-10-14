@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import HorizontalBar from '@/app/ui/d3-components/horizontal-bar';
+import Table from '@/app/ui/table';
 
 const UIController: React.FC = () => {
   let sample_values = [
@@ -26,6 +27,27 @@ const UIController: React.FC = () => {
           x_label="X Label"
           y_label="Y Label"
         />
+        <Table headings={[
+          { text: 'Heading 1', tooltip: 'Tooltip 1' },
+          { text: 'Heading 2' },
+          { text: 'Heading 3' }
+        ]} entries={[
+          [
+            { text: 'A', tooltip: 'Tooltip A' },
+            { text: 'B' },
+            { text: 'C' }
+          ],
+          [
+            { text: 'D', tooltip: 'Tooltip D' },
+            { text: 'E' },
+            { text: 'F' }
+          ],
+          [
+            { text: 'G', tooltip: 'Tooltip G' },
+            { text: 'H' },
+            { text: 'I' }
+          ]
+        ]} />
       </div>
     </div>
   );
