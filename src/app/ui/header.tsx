@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import PromptBox from '@/app/ui/key-config';
+import PromptBox from '@/app/ui/req-prompt';
 
 export default function Header() {
   const [isPromptOpen, setIsPromptOpen] = useState(false);
@@ -21,7 +21,7 @@ export default function Header() {
         className="ml-4 p-2 bg-blue-500 text-white rounded" 
         onClick={handleButtonClick}
       >
-        Open Prompt
+        Requirements Configuration
       </button>
       {isPromptOpen && <PromptBox onClose={handlePromptClose} />}
     </header>
