@@ -7,6 +7,8 @@
 
 import checkRequirement from "./reqs";
 import { RequirementCheck } from "./definitions";
+import { UISection } from "@/app/ui/ui-controller";
+import ConfigRetrieval from "./configs-retrieval";
 
 /**
  * Class representing a Visualizer.
@@ -20,7 +22,7 @@ export default class Visualizer {
    * @constructor
   **/
   constructor() {
-    this.requirements = checkRequirement()
+    this.requirements = checkRequirement();
   }
 
   /**
@@ -48,12 +50,19 @@ export default class Visualizer {
    * Get the list of visualizations.
    * @returns {Array<Object>} An array of visualization objects.
   **/
-  getVisualizations(): Array<Object> {
+  getVisualizations(): Array<UISection> {
+    // FIXME: This is a hardcoded list of visualizations.
+    //
+    // This method should return the UISection array and an array of
+    // configurations that couldn't load (e.g., due to missing requirements).
+
+    let ui_descriptions = (new ConfigRetrieval()).getUISections(this.requirements);
+
     return [
-      {
-        name: "Liquidity",
-        description: "Liquidity visualizations", 
-      }
+      // {
+      //   name: "Liquidity",
+      //   description: "Liquidity visualizations", 
+      // }
     ]
   }
 }

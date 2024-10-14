@@ -56,22 +56,14 @@ export type RequirementValue = {
 **/
 export interface ConfigRetrievalInterface {
   /**
-   * Retrieves the configuration module.
-   * @returns {Array<ConfigModuleInterface>} An array of configuration modules.
-  **/
-  getQueriesConfig(): Array<ConfigModuleInterface>;
-
-  /**
-   * Adds path to the data config files.
-   * @param path The path to the data config files.
-  **/
-  addConfigPath(path: string): void;
-
-  /**
-   * Retrieves the paths to the data config file.
-   * @returns {Array<string>} The paths to the data config file.
+   * Read the configuration modules in the config folder and calls the
+   * appropiate methods to construct the UI sections. The configuration modules
+   * must implement the ConfigModuleInterface interface
+   * 
+   * @returns {Promise<Array<UISection>>} The configuration modules.
+   * @see ConfigModuleInterface
    **/
-  getConfigPath(): Array<string>;
+  getUISections(requirements: Array<RequirementCheck>): Promise<Array<UISection>>;
 }
 
 /**

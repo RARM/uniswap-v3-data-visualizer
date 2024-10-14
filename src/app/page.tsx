@@ -6,6 +6,7 @@ import Visualizer from "./lib/visualizer";
 export default function Home() {
   const dataController = new Visualizer();
   const missingReq = dataController.getMissingRequirements();
+  const visualizations = dataController.getVisualizations();
   
   return (
     <>
@@ -18,7 +19,9 @@ export default function Home() {
             </div>
         </div>
       )}
-      <UIController />
+      <UIController
+        sections={visualizations}
+      />
       </main>
     </>
   );

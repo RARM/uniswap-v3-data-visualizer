@@ -27,7 +27,7 @@ export type UIControllerProps = {
   sections: Array<UISection>;
 }
 
-const UIController: React.FC = () => {
+const UIController: React.FC<UIControllerProps> = ({ sections }) => {
   let sample_values = [
     { label: 'A', value: 10 },
     { label: 'B', value: 20 },

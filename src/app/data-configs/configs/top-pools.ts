@@ -1,7 +1,6 @@
-import { ConfigModuleInterface, QueryType } from "../lib/definitions";
+import { ConfigModuleInterface, QueryType } from "@/app/lib/definitions";
 
-// Create interface.
-let TopPoolsConfig: ConfigModuleInterface = {
+const TopPoolsConfig: ConfigModuleInterface = {
   queryType: QueryType.GraphQL,
   path: '@/app/data-configs/queries/top-pools.graphql',
   requirements: ["subgraph_api"],
