@@ -49,6 +49,7 @@ const HorizontalBar: React.FC<HorizontalBarProps> = ({ values, values_symbol, x_
           .style('left', `${event.pageX}px`)
           .style('top', `${event.pageY - 45}px`)
           .style('font-size', '0.9em')
+          .style('color', 'black')
           .style('padding', '2px 12px');
       })
       .on('mouseout', function () {
