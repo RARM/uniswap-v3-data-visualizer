@@ -19,7 +19,7 @@ const UIController: React.FC = () => {
   
   return (
     <div>
-      <h1>Data Visualizer</h1>
+      <h1 className="text-3xl font-bold mb-4">Data Visualizer</h1>
       <div className="bg-gray-100 rounded">
         <HorizontalBar
           values={sample_values}

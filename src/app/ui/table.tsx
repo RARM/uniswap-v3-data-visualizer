@@ -1,6 +1,6 @@
 import React from 'react';
 
-type TableProps = {
+export type TableProps = {
   headings: { text: string; tooltip?: string }[];
   entries: { text: string; tooltip?: string }[][];
 };
