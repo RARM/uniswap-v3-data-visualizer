@@ -1,3 +1,5 @@
+import { UISection } from "@/app/ui/ui-controller";
+
 /**
  * Type representing a requirement check.
 **/
@@ -73,6 +75,21 @@ export interface ConfigRetrievalInterface {
 }
 
 /**
+ * Represents a request for querying data.
+**/
+type QueryRequest = {
+  /**
+   * The URL to send the query request to.
+  **/
+  URL: string;
+
+  /**
+   * (Optional) Additional data to include in the query request.
+  **/
+  extraData?: { [key: string]: string };
+}
+
+/**
  * Interface for the config module. It defines the data needed to make the
  * query and create the UI interface for the data queried.
 **/
@@ -88,19 +105,23 @@ export interface ConfigModuleInterface {
   path: string;
 
   /**
-   * The expected values based on the query.
+   * The requirements needed to make the query.
+   * @see RequirementCheck
   **/
-  expectedValues: ExpectedValues;
+  requirements: Array<string>;
 
   /**
-   * The type of UI component needed to generate the data queried.
+   * Construct the request URL plus any extra data for the query.
+   * @returns {QueryRequest} The URL and extra data for the query.
   **/
-  uiComponentType: string;
+  URL: () => QueryRequest;
 
   /**
-   * Defines how to connect the ExpectedValues and the UI component that renders it.
+   * Defines how to connect the expected values and the UI component that renders it.
+   * @param json_queried_values The queried values from the data source.
+   * @returns {UISection} The UI section to be rendered.
   **/
-  connectionLogic: (expectedValues: ExpectedValues) => any; // FIXME: Define the return type.
+  connectionLogic: (json_queried_values: any) => UISection;
 }
 
 /**

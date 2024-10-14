@@ -12,16 +12,19 @@ const UIComponentsMap = {
 };
 // End of FIXME.
 
-type UIControllerProps = {
-  sections: Array<{
-    heading: string;
+export type UISection = {
+  heading: string;
+  description?: string;
+  components: Array<{
+    subheading?: string;
     description?: string;
-    components: Array<{
-      subheading?: string;
-      component: string;
-      props: any;
-    }>;
-  }>;
+    component: string;
+    props: any;
+  }>
+};
+
+export type UIControllerProps = {
+  sections: Array<UISection>;
 }
 
 const UIController: React.FC = () => {
