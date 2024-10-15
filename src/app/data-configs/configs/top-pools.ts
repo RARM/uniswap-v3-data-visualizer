@@ -14,7 +14,7 @@ const TopPoolsConfig: ConfigModuleInterface = {
 
   connectionLogic: (json_queried_values: any) : UISection => {
     const pools = json_queried_values.data.pools;
-    const deciamls = 2;
+    const decimals = 2;
     
     const uiDescription: UISection = {
       heading: 'Top 10 Pools',
@@ -27,7 +27,7 @@ const TopPoolsConfig: ConfigModuleInterface = {
             values: pools.map((pool: any) => {
               return {
                 label: `...${pool.id.slice(-6)}`,
-                value: (parseFloat(pool.totalValueLockedUSD) / 1000000000).toFixed(deciamls)
+                value: (parseFloat(pool.totalValueLockedUSD) / 1000000000).toFixed(decimals)
               }
             }),
             values_symbol: '$ (Billions)',
@@ -51,8 +51,8 @@ const TopPoolsConfig: ConfigModuleInterface = {
                 { text: `...${pool.id.slice(-6)}`, tooltip: pool.id },
                 { text: pool.token0.symbol, tooltip: pool.token0.name },
                 { text: pool.token1.symbol, tooltip: pool.token1.name },
-                { text: parseFloat(pool.volumeUSD).toFixed(deciamls) },
-                { text: parseFloat(pool.totalValueLockedUSD).toFixed(deciamls) }
+                { text: parseFloat(pool.volumeUSD).toFixed(decimals) },
+                { text: parseFloat(pool.totalValueLockedUSD).toFixed(decimals) }
               ]
             })
           }

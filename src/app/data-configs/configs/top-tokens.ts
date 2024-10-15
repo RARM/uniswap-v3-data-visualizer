@@ -14,7 +14,7 @@ const TopTokensConfig: ConfigModuleInterface = {
 
   connectionLogic: (json_queried_values: any) : UISection => {
     const tokens = json_queried_values.data.tokens;
-    const deciamls = 2;
+    const decimals = 2;
     
     const uiDescription: UISection = {
       heading: 'Top Tokens',
@@ -34,8 +34,8 @@ const TopTokensConfig: ConfigModuleInterface = {
               return [
                 { text: `...${token.id.slice(-6)}`, tooltip: token.id },
                 { text: token.symbol, tooltip: token.name },
-                { text: parseFloat(token.tokenDayData[0].priceUSD).toFixed(deciamls) },
-                { text: (parseFloat(token.tokenDayData[0].priceUSD) - parseFloat(token.tokenDayData[1].priceUSD)).toFixed(deciamls) }
+                { text: parseFloat(token.tokenDayData[0].priceUSD).toFixed(decimals) },
+                { text: (parseFloat(token.tokenDayData[0].priceUSD) - parseFloat(token.tokenDayData[1].priceUSD)).toFixed(decimals) }
               ]
             })
           }
