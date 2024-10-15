@@ -27,7 +27,7 @@ const Table: React.FC<TableProps> = ({ headings, entries }) => {
             {headings.map((heading, index) => (
               <th
                 key={index}
-                className="px-4 py-2 border-b border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-left text-sm font-semibold text-gray-700 dark:text-gray-300"
+                className={`px-4 py-2 border-b border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-left text-sm font-semibold text-gray-700 dark:text-gray-300 ${heading.tooltip ? 'underline decoration-dashed decoration-1' : ''}`}
                 title={heading.tooltip || ''}
               >
                 {heading.text}
@@ -60,7 +60,7 @@ const Table: React.FC<TableProps> = ({ headings, entries }) => {
                     <animated.td
                       key={colIndex}
                       style={cellSpring}
-                      className="px-4 py-2 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300"
+                      className={`px-4 py-2 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300 ${entry.tooltip ? 'underline decoration-dashed decoration-1' : ''}`}
                       title={entry.tooltip || ''}
                     >
                       {entry.text}
