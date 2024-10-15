@@ -4,10 +4,12 @@ import { useSpring, animated } from '@react-spring/web';
 export type TableProps = {
   headings: { text: string; tooltip?: string }[];
   entries: { text: string; tooltip?: string }[][];
+  entriesPerPage?: number;
 };
 
-const Table: React.FC<TableProps> = ({ headings, entries }) => {
+const Table: React.FC<TableProps> = ({ headings, entries, entriesPerPage = 10 }) => {
   const [loaded, setLoaded] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     setLoaded(true);
@@ -18,6 +20,17 @@ const Table: React.FC<TableProps> = ({ headings, entries }) => {
     transform: loaded ? 'translateY(0)' : 'translateY(-20px)',
     config: { tension: 200, friction: 20 },
   });
+
+  const totalPages = Math.floor(entries.length / entriesPerPage);
+  const currentEntries = entries.slice((currentPage - 1) * entriesPerPage, currentPage * entriesPerPage);
+
+  const handlePreviousPage = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  };
 
   return (
     <div>
@@ -36,7 +49,7 @@ const Table: React.FC<TableProps> = ({ headings, entries }) => {
           </tr>
         </thead>
         <tbody>
-          {entries.map((row, rowIndex) => {
+          {currentEntries.map((row, rowIndex) => {
             const rowSpring = useSpring({
               from: { opacity: 0, transform: 'translateY(20px)' },
               to: { opacity: 1, transform: 'translateY(0)' },
@@ -72,6 +85,27 @@ const Table: React.FC<TableProps> = ({ headings, entries }) => {
           })}
         </tbody>
       </animated.table>
+      {totalPages > 1 && (
+        <div className="flex mt-4">
+          <button
+            onClick={handlePreviousPage}
+            disabled={currentPage === 1}
+            className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded disabled:opacity-50"
+          >
+            Previous
+          </button>
+          <span className="px-4 py-2 text-gray-700 dark:text-gray-300">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };

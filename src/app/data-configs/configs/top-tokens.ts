@@ -18,7 +18,7 @@ const TopTokensConfig: ConfigModuleInterface = {
     
     let uiDescription: UISection = {
       heading: 'Top Tokens',
-      description: 'The top 100 tokens by ---.',
+      description: 'The top 100 tokens by 24-hour volumen (USD).',
       order: 2,
       components: [
         {
