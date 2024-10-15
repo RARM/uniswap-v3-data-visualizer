@@ -51,19 +51,13 @@ export default class Visualizer {
    * Get the list of visualizations.
    * @returns {Array<Object>} An array of visualization objects.
   **/
-  getVisualizations(): Array<UISection> {
-    // FIXME: This is a hardcoded list of visualizations.
-    //
+  getVisualizations(): Promise<Array<UISection>> {
+    // FIXME: 
     // This method should return the UISection array and an array of
     // configurations that couldn't load (e.g., due to missing requirements).
-
-    let ui_descriptions = (new ConfigRetrieval()).getUISections(this.requirements);
-
-    return [
-      // {
-      //   name: "Liquidity",
-      //   description: "Liquidity visualizations", 
-      // }
-    ]
+    return new Promise(async resolve => {
+      let ui_descriptions = await (new ConfigRetrieval()).getUISections(this.requirements);
+      resolve(ui_descriptions);
+    });
   }
 }
