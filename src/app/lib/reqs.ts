@@ -57,6 +57,7 @@ function testRequiredField(jsonObject: any, filename: string): void {
 function getRequirement(jsonObject: any) : RequirementCheck {
   let req: RequirementCheck = {
     name: jsonObject.name,
+    fulfilled: true,
     values: []
   };
 
@@ -81,6 +82,13 @@ function getRequirement(jsonObject: any) : RequirementCheck {
     }
 
     req.values.push(reqValue);
+  }
+
+  for (let value of req.values) {
+    if (!value.exists) {
+      req.fulfilled = false;
+      break;
+    }
   }
 
   return req;

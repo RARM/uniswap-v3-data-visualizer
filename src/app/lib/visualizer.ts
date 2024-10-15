@@ -38,6 +38,7 @@ export default class Visualizer {
         missingRequirements.push({
           name: req.name,
           description: req.description,
+          fulfilled: req.fulfilled,
           values: missingValues
         });
       }

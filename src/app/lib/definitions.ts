@@ -15,6 +15,11 @@ export type RequirementCheck = {
   description?: string;
 
   /**
+   * Indicates whether the requirements were fulfilled.
+  **/
+  fulfilled: boolean;
+
+  /**
    * An array of values associated with the requirement (optional).
   **/
   values: Array<RequirementValue>;
@@ -92,9 +97,9 @@ export interface ConfigModuleInterface {
   queryType: QueryType;
 
   /**
-   * The path for the query.
+   * The filename for the query in the queries folder.
   **/
-  path: string;
+  query_filename: string;
 
   /**
    * The requirements needed to make the query.
