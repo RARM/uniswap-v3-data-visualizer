@@ -15,6 +15,7 @@ const UIComponentsMap = {
 export type UISection = {
   heading: string;
   description?: string;
+  order: number;
   components: Array<{
     subheading?: string;
     description?: string;

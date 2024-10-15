@@ -4,9 +4,11 @@
     volumeUSD
     totalValueLockedUSD
     token0 {
+      name
       symbol
     }
     token1 {
+      name
       symbol
     }
   }

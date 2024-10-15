@@ -69,6 +69,12 @@ export default class ConfigRetrieval implements ConfigRetrievalInterface {
     return query;
   }
 
+  private organizeUISectionbyOrder(ui_sections: Array<UISection>): Array<UISection> {
+    return ui_sections.sort((a: UISection, b: UISection) => {
+      return a.order - b.order;
+    });
+  }
+
   getUISections(requirements: Array<RequirementCheck>): Promise<Array<UISection>> {
     return new Promise((resolve, reject) => {
       this.configModules.then((configModules) => {        
@@ -86,6 +92,7 @@ export default class ConfigRetrieval implements ConfigRetrievalInterface {
         });
 
         Promise.all(requests).then(() => {
+          ui_sections = this.organizeUISectionbyOrder(ui_sections);
           resolve(ui_sections);
         }).catch(reject => {
           // FIXME: What happens when a request fails?

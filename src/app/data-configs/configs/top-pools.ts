@@ -17,8 +17,9 @@ const TopPoolsConfig: ConfigModuleInterface = {
     const deciamls = 2;
     
     let uiDescription: UISection = {
-      heading: 'Top Pools',
+      heading: 'Top 10 Pools',
       description: 'The top 10 pools by Total Value Locked (TVL).',
+      order: 1,
       components: [
         {
           component: 'HorizontalBar',
@@ -29,8 +30,8 @@ const TopPoolsConfig: ConfigModuleInterface = {
                 value: (parseFloat(pool.totalValueLockedUSD) / 1000000000).toFixed(deciamls)
                 }
             }),
-            values_symbol: '$ (Millions)',
-            x_label: 'Total Value Locked (USD in Millions)',
+            values_symbol: '$ (Billions)',
+            x_label: 'Total Value Locked (USD in Billions)',
             y_label: 'Pool ID',
             isLogScale: true
           }
@@ -40,19 +41,19 @@ const TopPoolsConfig: ConfigModuleInterface = {
           props: {
             headings: [
               { text: 'Pool ID', tooltip: 'The ID of the pool.' },
-              { text: 'Token 0' },
               { text: 'Token 1' },
-              { text: 'VolumeUSD', tooltip: 'The volume of the pool in USD.' },
-              { text: 'TLV (USD)', tooltip: 'The total value locked in USD.' }
+              { text: 'Token 2' },
+              { text: 'VolumeUSD', tooltip: '24-hour trading volume in USD.' },
+              { text: 'TVL (USD)', tooltip: 'The total value locked in USD.' }
             ],
             entries: pools.map((pool: any) => {
-              return [
-                { text: pool.id },
-                { text: pool.token0.symbol },
-                { text: pool.token1.symbol },
+                return [
+                { text: `...${pool.id.slice(-6)}`, tooltip: pool.id },
+                { text: pool.token0.symbol, tooltip: pool.token0.name },
+                { text: pool.token1.symbol, tooltip: pool.token1.name },
                 { text: parseFloat(pool.volumeUSD).toFixed(deciamls) },
                 { text: parseFloat(pool.totalValueLockedUSD).toFixed(deciamls) }
-              ]
+                ]
             })
           }
         }

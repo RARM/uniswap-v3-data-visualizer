@@ -1,0 +1,13 @@
+{
+  tokens(first: 15, orderBy: totalValueLockedUSD, orderDirection: desc) {
+    id
+    name
+    symbol
+    tokenDayData(first: 2, orderBy: date, orderDirection: desc) {
+      close
+      date
+      priceUSD
+    }
+    totalValueLockedUSDUntracked
+  }
+}
