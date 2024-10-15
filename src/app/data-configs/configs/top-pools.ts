@@ -25,13 +25,14 @@ const TopPoolsConfig: ConfigModuleInterface = {
           props: {
             values: pools.map((pool: any) => {
                 return {
-                label: pool.id,
-                value: parseFloat(pool.totalValueLockedUSD).toFixed(deciamls)
+                label: `...${pool.id.slice(-6)}`,
+                value: (parseFloat(pool.totalValueLockedUSD) / 1000000000).toFixed(deciamls)
                 }
             }),
-            values_symbol: '$',
-            x_label: 'Total Value Locked (USD)',
+            values_symbol: '$ (Millions)',
+            x_label: 'Total Value Locked (USD in Millions)',
             y_label: 'Pool ID',
+            isLogScale: true
           }
         },
         {
