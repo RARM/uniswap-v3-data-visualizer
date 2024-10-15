@@ -69,7 +69,7 @@ const HorizontalBar: React.FC<HorizontalBarProps> = ({ values, values_symbol, x_
       })
       .transition() // Add transition for animation
       .duration(1000)
-      .attr('width', d => x(d) - x(1));
+      .attr('width', d => Math.max(0, x(d) - x(1)));
 
     // X labels.
     svg.append('g')
