@@ -1,5 +1,5 @@
 {
-  tokens(first: 35, orderBy: volumeUSD, orderDirection: desc) {
+  tokens(first: 100, orderBy: volumeUSD, orderDirection: desc) {
     id
     name
     symbol
