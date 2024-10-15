@@ -3,10 +3,18 @@
     id
     volumeUSD
     totalValueLockedUSD
+    observationIndex
+    liquidity
+    createdAtBlockNumber
+    feeTier
     token0 {
+      decimals
+      id
       symbol
     }
     token1 {
+      id
+      decimals
       symbol
     }
   }
