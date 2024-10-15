@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import { useSpring, animated } from '@react-spring/web';
 
 export interface HorizontalBarProps {
   values: Array<{

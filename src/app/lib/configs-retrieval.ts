@@ -20,7 +20,7 @@ export default class ConfigRetrieval implements ConfigRetrievalInterface {
 
   private async getQueriesConfig(): Promise<ConfigModuleInterface[]> {
     this.moduleNames = this.getConfigModuleNames();
-    let configModules: ConfigModuleInterface[] = [];
+    const configModules: ConfigModuleInterface[] = [];
     
     for (const moduleName of this.moduleNames) {
       const module = (await import('@/app/data-configs/configs/' + moduleName + '.ts')).default as ConfigModuleInterface;
@@ -49,10 +49,10 @@ export default class ConfigRetrieval implements ConfigRetrievalInterface {
           query: body
         })
       })
-      .then(response => response.json())
-      .then(json => {
-        resolve(json);
-      });
+        .then(response => response.json())
+        .then(json => {
+          resolve(json);
+        });
     });
   }
 
@@ -65,7 +65,7 @@ export default class ConfigRetrieval implements ConfigRetrievalInterface {
   }
 
   private getQueryBody(module: ConfigModuleInterface): string { // FIXME: Manage different setups.
-    let query = fs.readFileSync(path.resolve('src/app/data-configs/queries', module.query_filename)).toString();
+    const query = fs.readFileSync(path.resolve('src/app/data-configs/queries', module.query_filename)).toString();
     return query;
   }
 
@@ -82,10 +82,10 @@ export default class ConfigRetrieval implements ConfigRetrievalInterface {
 
         const requests = configModules.map(async (module) => {
           if (this.checkRequirements(module, requirements)) {
-            let body = this.getQueryBody(module);
+            const body = this.getQueryBody(module);
 
             const json_queried_values = await this.sendRequest(module.URL().URL, body); // FIXME: Add extraData support.
-            let ui_desc = module.connectionLogic(json_queried_values);
+            const ui_desc = module.connectionLogic(json_queried_values);
 
             ui_sections.push(ui_desc);
           }
@@ -94,8 +94,6 @@ export default class ConfigRetrieval implements ConfigRetrievalInterface {
         Promise.all(requests).then(() => {
           ui_sections = this.organizeUISectionbyOrder(ui_sections);
           resolve(ui_sections);
-        }).catch(reject => {
-          // FIXME: What happens when a request fails?
         });
       });
     });

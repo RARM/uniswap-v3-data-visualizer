@@ -13,10 +13,10 @@ const TopTokensConfig: ConfigModuleInterface = {
   },
 
   connectionLogic: (json_queried_values: any) : UISection => {
-    let tokens = json_queried_values.data.tokens;
+    const tokens = json_queried_values.data.tokens;
     const deciamls = 2;
     
-    let uiDescription: UISection = {
+    const uiDescription: UISection = {
       heading: 'Top Tokens',
       description: 'The top 100 tokens by 24-hour volumen (USD).',
       order: 2,

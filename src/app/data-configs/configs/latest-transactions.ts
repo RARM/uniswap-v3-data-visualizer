@@ -13,10 +13,10 @@ const LatestTransactionsConfig: ConfigModuleInterface = {
   },
 
   connectionLogic: (json_queried_values: any) : UISection => {
-    let transactions = json_queried_values.data.transactions;
+    const transactions = json_queried_values.data.transactions;
     const decimals = 2;
     
-    let uiDescription: UISection = {
+    const uiDescription: UISection = {
       heading: 'Latest Transactions',
       description: 'The latest 20 transactions.',
       order: 3,
@@ -74,13 +74,13 @@ const timeAgo = (timestamp: number) => {
 
   if (secondsPast < 60) {
     return `${Math.floor(secondsPast)} sec${Math.floor(secondsPast) !== 1 ? 's' : ''} ago`;
-    } else if (secondsPast < 3600) {
+  } else if (secondsPast < 3600) {
     const minutes = Math.floor(secondsPast / 60);
     return `${minutes} min${minutes !== 1 ? 's' : ''} ago`;
-    } else if (secondsPast <= 86400) {
+  } else if (secondsPast <= 86400) {
     const hours = Math.floor(secondsPast / 3600);
     return `${hours} hr${hours !== 1 ? 's' : ''} ago`;
-    } else {
+  } else {
     const days = Math.floor(secondsPast / 86400);
     return `${days} day${days !== 1 ? 's' : ''} ago`;
   }

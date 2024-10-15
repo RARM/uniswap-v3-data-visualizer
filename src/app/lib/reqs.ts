@@ -22,10 +22,10 @@ export default function checkRequirements(): Array<RequirementCheck> {
 }
 
 function logRequirementsChecks(reqs: RequirementCheck[]): void {
-  for (let req of reqs) {
+  for (const req of reqs) {
     console.log(`\nRequirement: ${req.name}`);
     console.log(`Description: ${req.description}`);
-    for (let value of req.values) {
+    for (const value of req.values) {
       console.log(`\tName: ${value.name}`);
       console.log(`\tDescription: ${value.description}`);
       console.log(`\tEnvironment: ${value.env}`);
@@ -55,7 +55,7 @@ function testRequiredField(jsonObject: any, filename: string): void {
 }
 
 function getRequirement(jsonObject: any) : RequirementCheck {
-  let req: RequirementCheck = {
+  const req: RequirementCheck = {
     name: jsonObject.name,
     fulfilled: true,
     values: []
@@ -65,8 +65,8 @@ function getRequirement(jsonObject: any) : RequirementCheck {
     req.description = jsonObject.description;
   }
 
-  for (let value of jsonObject.values) {
-    let reqValue: RequirementValue = {
+  for (const value of jsonObject.values) {
+    const reqValue: RequirementValue = {
       name: value.name,
       exists: false,
       env: value.env
@@ -84,7 +84,7 @@ function getRequirement(jsonObject: any) : RequirementCheck {
     req.values.push(reqValue);
   }
 
-  for (let value of req.values) {
+  for (const value of req.values) {
     if (!value.exists) {
       req.fulfilled = false;
       break;

@@ -30,10 +30,10 @@ export default class Visualizer {
    * @returns {Array<RequirementCheck>} An array of requirements still missing.
   **/
   getMissingRequirements(): Array<RequirementCheck> {
-    let missingRequirements: Array<RequirementCheck> = [];
+    const missingRequirements: Array<RequirementCheck> = [];
 
-    for (let req of this.requirements) {
-      let missingValues = req.values.filter(value => !value.exists);
+    for (const req of this.requirements) {
+      const missingValues = req.values.filter(value => !value.exists);
       if (missingValues.length > 0) {
         missingRequirements.push({
           name: req.name,
@@ -56,7 +56,7 @@ export default class Visualizer {
     // This method should return the UISection array and an array of
     // configurations that couldn't load (e.g., due to missing requirements).
     return new Promise(async resolve => {
-      let ui_descriptions = await (new ConfigRetrieval()).getUISections(this.requirements);
+      const ui_descriptions = await (new ConfigRetrieval()).getUISections(this.requirements);
       resolve(ui_descriptions);
     });
   }
