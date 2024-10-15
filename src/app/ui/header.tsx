@@ -15,15 +15,17 @@ export default function Header() {
   };
 
   return (
-    <header className="flex items-center justify-between p-4 bg-gray-700">
-      <h1 className="text-xl font-bold text-white">Uniswap V3 Data Visualizer</h1>
-      <button 
-        className="ml-4 p-2 bg-blue-500 text-white rounded" 
-        onClick={handleButtonClick}
-      >
-        Requirements Configuration
-      </button>
+    <>
+      <header className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 bg-opacity-90 backdrop-filter backdrop-blur-lg">
+        <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">Uniswap V3 Data Visualizer</h1>
+        <button 
+          className="ml-4 p-2 bg-gray-200 text-gray-900 rounded dark:bg-gray-700 dark:text-gray-100" 
+          onClick={handleButtonClick}
+        >
+          Requirements Configuration
+        </button>
+      </header>
       {isPromptOpen && <PromptBox onClose={handlePromptClose} />}
-    </header>
+    </>
   );
 }

@@ -41,8 +41,8 @@ const PromptBox: React.FC<PromptBoxProps> = ({ onClose }: PromptBoxProps): React
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-      <div className="bg-white p-4 rounded shadow-lg">
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+      <div className="bg-white p-4 rounded shadow-lg w-11/12 max-w-md mx-auto">
         <h2 className="text-lg font-bold mb-2">Key Configuration</h2>
         <p>[Instructions here.]</p>
         <input
