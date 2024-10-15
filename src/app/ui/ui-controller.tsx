@@ -38,10 +38,10 @@ const UIController: React.FC<UIControllerProps> = ({ sections }) => {
   return (
     <div>
       {resolvedSections.map((section, sectionIndex) => (
-        <div key={sectionIndex} className="bg-white dark:bg-gray-800 bg-opacity-70 dark:bg-opacity-70 backdrop-filter backdrop-blur-lg rounded mb-4 p-4">
+        <div key={sectionIndex} className="bg-white dark:bg-gray-800 bg-opacity-70 dark:bg-opacity-70 backdrop-filter backdrop-blur-lg rounded mb-4 p-4 shadow-lg">
           <h1 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-gray-100">{section.heading}</h1>
-          {section.description && <p className="mb-2 text-gray-700 dark:text-gray-300">{section.description}</p>}
-          {section.components.map((component, componentIndex) => {
+            {section.description && <p className="mb-2 text-gray-700 dark:text-gray-300">{section.description}</p>}
+            {section.components.map((component, componentIndex) => {
             const Component = UIComponentsMap[component.component as keyof typeof UIComponentsMap];
             return (
               <div key={componentIndex} className="mb-4">
