@@ -1,0 +1,21 @@
+{
+  transactions(first: 20, orderBy: timestamp, orderDirection: desc) {
+    id
+    swaps {
+      amountUSD
+      amount0
+      amount1
+      token0 {
+        symbol
+        name
+      }
+      token1 {
+        name
+        symbol
+      }
+      recipient
+      sender
+    }
+    timestamp
+  }
+}

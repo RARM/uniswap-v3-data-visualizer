@@ -35,9 +35,7 @@ const TopTokensConfig: ConfigModuleInterface = {
                 { text: `...${token.id.slice(-6)}`, tooltip: token.id },
                 { text: token.symbol, tooltip: token.name },
                 { text: parseFloat(token.tokenDayData[0].priceUSD).toFixed(deciamls) },
-                { text: (parseFloat(token.tokenDayData[0].priceUSD) - parseFloat(token.tokenDayData[1].priceUSD)).toFixed(deciamls) },
-                // { text: parseFloat(token.volumeUSD).toFixed(deciamls) },
-                // { text: parseFloat(token.totalValueLockedUSD).toFixed(deciamls) }
+                { text: (parseFloat(token.tokenDayData[0].priceUSD) - parseFloat(token.tokenDayData[1].priceUSD)).toFixed(deciamls) }
               ]
             })
           }
