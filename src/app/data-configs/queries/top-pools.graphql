@@ -1,5 +1,5 @@
 {
-  pools(first: 100, orderBy: totalValueLockedUSD) {
+  pools(first: 10, orderBy: totalValueLockedUSD, orderDirection: desc) {
     id
     volumeUSD
     totalValueLockedUSD
