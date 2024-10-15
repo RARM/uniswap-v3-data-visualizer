@@ -74,20 +74,22 @@ export default class ConfigRetrieval implements ConfigRetrievalInterface {
       this.configModules.then((configModules) => {        
         let ui_sections: Array<UISection> = [];
 
-        for (const module of configModules) {
+        const requests = configModules.map(async (module) => {
           if (this.checkRequirements(module, requirements)) {
-            // console.log('Requirements met for module:', module);
-            
             let body = this.getQueryBody(module);
 
-            this.sendRequest(module.URL().URL, body) // FIXME: Add extraData support.
-            .then((json_queried_values: any) => {              
-              module.connectionLogic(json_queried_values);
-            });
-          }
-        }
+            const json_queried_values = await this.sendRequest(module.URL().URL, body); // FIXME: Add extraData support.
+            let ui_desc = module.connectionLogic(json_queried_values);
 
-        resolve(ui_sections);
+            ui_sections.push(ui_desc);
+          }
+        });
+
+        Promise.all(requests).then(() => {
+          resolve(ui_sections);
+        }).catch(reject => {
+          // FIXME: What happens when a request fails?
+        });
       });
     });
   }
