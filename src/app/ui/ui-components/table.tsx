@@ -34,59 +34,61 @@ const Table: React.FC<TableProps> = ({ headings, entries, entriesPerPage = 10 })
 
   return (
     <div>
-      <animated.table style={tableSpring} className="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-        <thead>
-          <tr>
-            {headings.map((heading, index) => (
-              <th
-                key={index}
-                className={`px-4 py-2 border-b border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-left text-sm font-semibold text-gray-700 dark:text-gray-300 ${heading.tooltip ? 'underline decoration-dashed decoration-1' : ''}`}
-                title={heading.tooltip || ''}
-              >
-                {heading.text}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {currentEntries.map((row, rowIndex) => {
-            const rowSpring = useSpring({
-              from: { opacity: 0, transform: 'translateY(20px)' },
-              to: { opacity: 1, transform: 'translateY(0)' },
-              delay: rowIndex * 100,
-            });
+      <div className="overflow-x-auto">
+        <animated.table style={tableSpring} className="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+          <thead>
+            <tr>
+              {headings.map((heading, index) => (
+                <th
+                  key={index}
+                  className={`px-4 py-2 border-b border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-left text-sm font-semibold text-gray-700 dark:text-gray-300 ${heading.tooltip ? 'underline decoration-dashed decoration-1' : ''}`}
+                  title={heading.tooltip || ''}
+                >
+                  {heading.text}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {currentEntries.map((row, rowIndex) => {
+              const rowSpring = useSpring({
+                from: { opacity: 0, transform: 'translateY(20px)' },
+                to: { opacity: 1, transform: 'translateY(0)' },
+                delay: rowIndex * 100,
+              });
 
-            return (
-              <animated.tr
-                key={rowIndex}
-                style={rowSpring}
-                className="hover:bg-gray-50 dark:hover:bg-gray-700"
-              >
-                {row.map((entry, colIndex) => {
-                  const cellSpring = useSpring({
-                    from: { opacity: 0, transform: 'translateY(20px)' },
-                    to: { opacity: 1, transform: 'translateY(0)' },
-                    delay: colIndex * 100,
-                  });
+              return (
+                <animated.tr
+                  key={rowIndex}
+                  style={rowSpring}
+                  className="hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
+                  {row.map((entry, colIndex) => {
+                    const cellSpring = useSpring({
+                      from: { opacity: 0, transform: 'translateY(20px)' },
+                      to: { opacity: 1, transform: 'translateY(0)' },
+                      delay: colIndex * 100,
+                    });
 
-                  return (
-                    <animated.td
-                      key={colIndex}
-                      style={cellSpring}
-                      className={`px-4 py-2 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300 ${entry.tooltip ? 'underline decoration-dashed decoration-1' : ''}`}
-                      title={entry.tooltip || ''}
-                    >
-                      {entry.text}
-                    </animated.td>
-                  );
-                })}
-              </animated.tr>
-            );
-          })}
-        </tbody>
-      </animated.table>
+                    return (
+                      <animated.td
+                        key={colIndex}
+                        style={cellSpring}
+                        className={`px-4 py-2 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300 ${entry.tooltip ? 'underline decoration-dashed decoration-1' : ''}`}
+                        title={entry.tooltip || ''}
+                      >
+                        {entry.text}
+                      </animated.td>
+                    );
+                  })}
+                </animated.tr>
+              );
+            })}
+          </tbody>
+        </animated.table>
+      </div>
       {totalPages > 1 && (
-        <div className="flex mt-4">
+        <div className="flex mt-4 justify-between">
           <button
             onClick={handlePreviousPage}
             disabled={currentPage === 1}

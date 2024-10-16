@@ -36,9 +36,9 @@ const UIController: React.FC<UIControllerProps> = ({ sections }) => {
   }, [sections]);
 
   return (
-    <div>
+    <div className="container mx-auto py-4">
       {resolvedSections.map((section, sectionIndex) => (
-        <div key={sectionIndex} className="bg-white dark:bg-gray-800 bg-opacity-70 dark:bg-opacity-70 backdrop-filter backdrop-blur-lg rounded mb-4 p-4 shadow-lg">
+        <div key={sectionIndex} className="bg-white dark:bg-gray-800 bg-opacity-70 dark:bg-opacity-70 backdrop-filter backdrop-blur-lg rounded mb-4 p-4 shadow-lg overflow-x-auto">
           <h1 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-gray-100">{section.heading}</h1>
           {section.description && <p className="mb-2 text-gray-700 dark:text-gray-300">{section.description}</p>}
           {section.components.map((component, componentIndex) => {
