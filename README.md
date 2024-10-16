@@ -3,6 +3,8 @@ This project is a solution to [this Full Stack Coding Challenge](https://webbtoo
 
 The section below provides a quick guide to setting up and running the project locally, but the Wikis have more information on the project's design and functionalities.
 
+Alternatively, watch the [Uniswap V3 Data Visualizer Demo](https://youtu.be/_0CC9FgyJDY).
+
 ## Quick Setup Guide
 Yarn is a prerequisite to set up the project, but the front end also needs a The Graph API key; run the front end locally by running the following commands.
 
