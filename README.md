@@ -1,5 +1,5 @@
 # Uniswap V3 Data Visualizer
-This project is a solution to this Full Stack Coding Challenge. As the challenge requires, it is a front end that pulls information about the top pools, tokens, and transactions of the [Uniswap V3](https://app.uniswap.org/) protocol through [The Graph](https://thegraph.com/).
+This project is a solution to [this Full Stack Coding Challenge](https://webbtools.notion.site/Full-Stack-Coding-Challenge-c7ba2a97e5ab44409e051ae414a13833). As the challenge requires, it is a front end that pulls information about the top pools, tokens, and transactions of the [Uniswap V3](https://app.uniswap.org/) protocol through [The Graph](https://thegraph.com/).
 
 The section below provides a quick guide to setting up and running the project locally, but the Wikis have more information on the project's design and functionalities.
 
