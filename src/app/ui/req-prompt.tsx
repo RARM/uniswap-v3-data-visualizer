@@ -53,9 +53,9 @@ const PromptBox: React.FC<PromptBoxProps> = ({ onClose }: PromptBoxProps): React
         />
         <button
           onClick={handleSubmit}
-          className="bg-blue-500 text-white p-2 rounded"
+          className="bg-blue-500 text-white p-2 rounded transition duration-300 ease-in-out transform hover:bg-blue-600"
         >
-      Submit
+          Submit
         </button>
       </div>
     </div>
