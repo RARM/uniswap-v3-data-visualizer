@@ -41,21 +41,21 @@ const PromptBox: React.FC<PromptBoxProps> = ({ onClose }: PromptBoxProps): React
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-      <div className="bg-white p-4 rounded shadow-lg w-11/12 max-w-md mx-auto">
-        <h2 className="text-lg font-bold mb-2">Key Configuration</h2>
-        <p>[Instructions here.]</p>
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
+      <div className="bg-gray-800 p-4 rounded shadow-lg w-11/12 max-w-md mx-auto">
+        <h2 className="text-lg font-bold mb-2 text-white">Key Configuration</h2>
+        <p className="text-gray-300 mb-4">[Instructions here.]</p>
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="border p-2 mb-4 w-full"
+          className="border p-2 mb-4 w-full bg-gray-700 text-white border-gray-600"
         />
         <button
           onClick={handleSubmit}
           className="bg-blue-500 text-white p-2 rounded"
         >
-          Submit
+      Submit
         </button>
       </div>
     </div>
