@@ -5,6 +5,8 @@ The section below provides a quick guide to setting up and running the project l
 
 Alternatively, watch the [Uniswap V3 Data Visualizer Demo](https://youtu.be/_0CC9FgyJDY).
 
+![ezgif-6-0ee1e1d034](https://github.com/user-attachments/assets/dba558a5-274f-4ea4-ab76-87ed6b93384e)
+
 ## Quick Setup Guide
 Yarn is a prerequisite to set up the project, but the front end also needs a The Graph API key; run the front end locally by running the following commands.
 
