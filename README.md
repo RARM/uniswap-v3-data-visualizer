@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Uniswap V3 Data Visualizer
+This project is a solution to this Full Stack Coding Challenge. As the challenge requires, it is a front end that pulls information about the top pools, tokens, and transactions of the [Uniswap V3](https://app.uniswap.org/) protocol through [The Graph](https://thegraph.com/).
 
-## Getting Started
+The section below provides a quick guide to setting up and running the project locally, but the Wikis have more information on the project's design and functionalities.
 
-First, run the development server:
+## Quick Setup Guide
+Yarn is a prerequisite to set up the project, but the front end also needs a The Graph API key; run the front end locally by running the following commands.
 
 ```bash
-npm run dev
-# or
+yarn
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Get an API key in [The Graph Studio](https://thegraph.com/studio/apikeys/) and save it in a new file `.env.local` in the root directory using the variable name `SUBGRAPH_KEY`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+SUBGRAPH_KEY=<api-key>
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) with your browser to view the solution.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## The Design
+Although it is a coding challenge, the solution considers the application's possible requirements if it were a company product. Its design heavily considers maintainability and flexibility. Learn more about the design and architecture in the Wikis.
